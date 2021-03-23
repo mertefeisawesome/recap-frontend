@@ -1,48 +1,27 @@
 import { Component, OnInit } from '@angular/core';
+import { Car } from '../../models/car';
+import { HttpClient } from '@angular/common/http';
+import { CarService } from 'src/app/services/car.service';
 
 @Component({
   selector: 'app-car',
   templateUrl: './car.component.html',
-  styleUrls: ['./car.component.css']
+  styleUrls: ['./car.component.css'],
 })
 export class CarComponent implements OnInit {
+  cars: Car[] = [];
+  dataLoaded = false;
 
-  product1 = {
-    productId: 1,
-    productName: 'Bardak',
-    categoryId: 1,
-    unitPrice: 5,
-  };
-  product2 = {
-    productId: 2,
-    productName: 'Laptop',
-    categoryId: 1,
-    unitPrice: 5,
-  };
-  product3 = {
-    productId: 3,
-    productName: 'Mouse',
-    categoryId: 1,
-    unitPrice: 5,
-  };
-  product4 = {
-    productId: 4,
-    productName: 'Keyboard',
-    categoryId: 1,
-    unitPrice: 5,
-  };
-  product5 = {
-    productId: 5,
-    productName: 'Camera',
-    categoryId: 1,
-    unitPrice: 5,
-  };
-
-  products = [this.product1,this.product2,this.product3,this.product4,this.product5];
-  
-  constructor() { }
+  constructor(private carService: CarService) {}
 
   ngOnInit(): void {
+    this.getCars();
   }
 
+  getCars() {
+    this.carService.getCars().subscribe((response) => {
+      this.cars = response.data;
+      this.dataLoaded = true;
+    });
+  }
 }

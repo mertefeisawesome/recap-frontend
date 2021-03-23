@@ -4,10 +4,10 @@
 <table *ngIf="dataLoaded == true" class="table">
   <thead>
     <th>Id</th>
-    <th>Marka</th>
+    <th>Renk</th>
   </thead>
-  <tr *ngFor="let brand of brands">
-    <td>{{ brand.id }}</td>
-    <td>{{ brand.name }}</td>
+  <tr *ngFor="let color of colors">
+    <td>{{ color.id }}</td>
+    <td>{{ color.name }}</td>
   </tr>
 </table>
