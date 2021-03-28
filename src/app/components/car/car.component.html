@@ -3,7 +3,6 @@
 </div>
 <table *ngIf="dataLoaded == true" class="table">
   <thead>
-    <th>Id</th>
     <th>Brand</th>
     <th>Model</th>
     <th>Color</th>
@@ -12,8 +11,7 @@
     <th>Description</th>
     <th>Availability</th>
   </thead>
-  <tr *ngFor="let car of cars">
-    <td>{{ car.id }}</td>
+  <tr *ngFor="let car of cars" routerLink="/cars/details/{{ car.id }}">
     <td>{{ car.brandName }}</td>
     <td>{{ car.carName }}</td>
     <td>{{ car.colorName }}</td>
